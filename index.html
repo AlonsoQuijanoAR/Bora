@@ -3,24 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#1d3b2f">
-  <meta name="description" content="Cargas de combustible, consumo y gastos del auto.">
+  <meta name="theme-color" content="#222427">
+  <meta name="description" content="Combustible, services, gastos y datos del auto.">
   <title>Bitácora del Auto</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand">
-        <img src="icons/icon-192.png" alt="" width="28" height="28">
-        <div>
+      <a class="brand" href="#/">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#222427"/>
+          <path d="M14 38a18 18 0 0 1 36 0" fill="none" stroke="#ececea" stroke-width="4.5" stroke-linecap="butt"/>
+          <path d="M14 38a18 18 0 0 1 4.2-11.6" fill="none" stroke="#f0a83a" stroke-width="4.5"/>
+          <path d="M32 38 41 24" stroke="#f0a83a" stroke-width="3.4" stroke-linecap="round"/>
+          <circle cx="32" cy="38" r="3.6" fill="#f0a83a"/>
+          <path d="M32 44.5c2.6 3.4 3.8 5.4 3.8 7a3.8 3.8 0 0 1-7.6 0c0-1.6 1.2-3.6 3.8-7z" fill="#ececea"/>
+        </svg>
+        <div class="brand-text">
           <div class="car-name" id="carName">Bitácora del Auto</div>
           <div class="car-sub" id="carSub"></div>
         </div>
-      </div>
+      </a>
+      <a class="gear" id="gear" href="#/ajustes" aria-label="Ajustes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </a>
     </div>
   </header>
 
@@ -35,18 +45,31 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
       <span>Historial</span>
     </a>
-    <a href="#/carga/nueva" data-tab="carga" class="tab-add" aria-label="Nueva carga">
+    <a href="#/" data-tab="nuevo" class="tab-add" id="addBtn" aria-label="Registrar algo nuevo">
       <span class="add-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
     </a>
     <a href="#/stats" data-tab="stats">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
       <span>Estadísticas</span>
     </a>
-    <a href="#/ajustes" data-tab="ajustes">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
-      <span>Ajustes</span>
+    <a href="#/auto" data-tab="auto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h14M3.5 16v-3.2l2-4.6A2 2 0 0 1 7.3 7h9.4a2 2 0 0 1 1.8 1.2l2 4.6V16M3.5 16v2.5M20.5 16v2.5"/><circle cx="7.5" cy="13" r="1"/><circle cx="16.5" cy="13" r="1"/></svg>
+      <span>Auto</span>
     </a>
   </nav>
+
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <div class="sheet-panel" role="dialog" aria-label="¿Qué querés registrar?">
+      <p class="sheet-title">¿Qué querés registrar?</p>
+      <div class="sheet-grid">
+        <a href="#/carga/nueva" data-close><b>Carga</b><span>Combustible</span></a>
+        <a href="#/service/nuevo" data-close><b>Service</b><span>Mantenimiento</span></a>
+        <a href="#/novedad/nueva" data-close><b>Novedad</b><span>Pinchazo, reparación…</span></a>
+        <a href="#/gasto/nuevo" data-close><b>Gasto</b><span>Seguro, patente, peaje…</span></a>
+      </div>
+    </div>
+  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

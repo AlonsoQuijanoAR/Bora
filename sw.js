@@ -1,10 +1,10 @@
 /* Service worker: guarda la app en el teléfono para que funcione sin conexión.
    Al publicar una versión nueva, cambiar VERSION. */
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 const CACHE = 'bitacora-' + VERSION;
 const ASSETS = [
   './', 'index.html', 'styles.css', 'core.js', 'app.js', 'manifest.webmanifest',
-  'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
+  'icon-192.png', 'icon-512.png', 'icon-maskable.png', 'apple-touch-icon.png',
 ];
 
 self.addEventListener('install', e => {
